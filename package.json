@@ -1,0 +1,42 @@
+{
+  "name": "blog2",
+  "version": "1.0.0",
+  "description": "我的博客（教学专用）",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack",
+    "dev2": "node app",
+    "dev3": "supervisor -w server,app.js,webpack.config.js  app",
+    "dev4": "set NODE_ENV=dev & supervisor -w server,app.js,webpack.config.js  app",
+    "dev5": "cross-env NODE_ENV=dev supervisor -w server,app.js,webpack.config.js  app",
+    "build": "webpack --config webpack.production.config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigmeow/Blog2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bigmeow/Blog2/issues"
+  },
+  "homepage": "https://github.com/bigmeow/Blog2#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.16",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.5",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "reload": "^2.2.1",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.5.5",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.18.2"
+  },
+  "dependencies": {
+    "express": "^4.15.4",
+    "swig": "^1.4.2"
+  }
+}

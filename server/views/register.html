@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form id="register-from">
+        <div>
+            用户名: <input type="text" name="username">
+        </div>
+        <div>
+            密码: <input type="password" name="password">
+        </div>
+        <button type="submit">提交</button>
+    </form>
+    <script>
+        let form=document.getElementById('register-from')
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            let username=form.username.value;
+            let password=form.password.value;
+            let xhr=new XMLHttpRequest();
+            xhr.onload=()=>{
+                if(xhr.status===200){
+                    let result=JSON.parse(xhr.responseText);
+                    if(result.success){
+                        alert('注册成功');
+                        location.reload();
+                    }else{
+                        alert(result.message)
+                    }
+                }
+            };
+            xhr.open('post','/api/register');
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            xhr.send('username='+username+'&password='+password);
+        })
+    </script>
+</body>
+</html>
