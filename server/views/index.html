@@ -1,19 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/public/css/main.css">
-</head>
-<body style="height:1000px">
-    我是indexs aaa bb aaa
+{% extends './layout.html' %} 
+{% block title %} 首页 {% endblock %} 
+{% block content%}
+
+        <div id="content" class="post-index">
+            {% for article in articles %}
+            <article  class="post type-post status-publish format-standard hentry category-tea-words" style="opacity: 1;">
+                <div class="article-wrap">
+            
+                    <header class="entry-header">
+                        <h1>
+                            <a href="/article/detail/{{ article.id }}" rel="bookmark" class="post-title pjax" title="{{ article.title }}">
+                                {{ article.title }}									
+                            </a>
+                            <span class="meta-time">{{ article.time.toISOString().substring(0,10) }}</span>
+                        </h1>
+                        
+                    </header>
+                    
+                    <div class="entry-content">
+                        <p>
+                            <a href="/article/detail/{{ article.id }}" class="post-title has-img-a pjax" title="{{ article.title }}" rel="bookmark">
+                                <img src="{{ article.cover }}">
+                            </a>
+                        </p>
+                        <p>
+                            {{ article.body }}
+                        </p>		
+                    </div>
+                    
+                </div>
+            </article>
+            {% endfor %}
+            
+
+            
 
 
-    <script src="/public/common/main.js"></script>
-
-    <!-- 服务器启动后浏览器页面自动刷新 -->
-    <!-- <script src="/reload/reload.js"></script> -->
-</body>
-</html>
+        </div>
+    
+{% endblock %} 
+{% block js %}
+<script data-main="index/index" src="/public/common/main.js"></script>
+{% endblock %}
