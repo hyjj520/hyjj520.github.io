@@ -1,0 +1,22 @@
+body.register{
+    background: url(/ueditor/upload/img/10053092_111926377363_2.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.register .avatar{
+    display: block;
+    width:80px;
+    height: 80px;
+    background: url(./avatar.jpg) no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+    margin: 20px auto;
+}
+.register .container{
+    margin-top: 100px;
+}
+.register form{
+    padding: 26px 24px 46px;
+    background-color: rgba(251,251,251,0.3);
+}

@@ -20,6 +20,51 @@ router.use((req, resp, next) => {
     //放行;注意：如果不放行的话，请求就会被堵塞在中间件，进入不到下面的路由
     next();
 });
+router.post('/register', (req, resp, next) => {
+    let parms = req.body;
+    //首先判断前端传的参数是否正确(后端必须做参数的正确性校验，考虑最坏的情况)
+    if (!parms.username || !parms.password) {
+        //返回给前端一个错误消息
+
+        responseMesg.message = '用户名或密码不能为空！'
+        resp.json(responseMesg);
+        return;
+    }
+
+    //在注册之前，我们得去查一下数据库，看一下用户名是否已经被
+    //别人注册了；如果被别人注册了，就返回错误提示
+    //如果没有，才进行注册操作
+
+
+    //查询数据库
+    //查询一条数据，如果根据条件查询出来的数据有多条
+    //那么只取其中第一条
+    User.findOne({
+        username: parms.username
+    }, (error, user) => {
+        if (user) {
+            //如果查出来了，就说明已经被注册了
+            responseMesg.message = '用户名已经被别人注册了！';
+            resp.json(responseMesg);
+        } else {
+            //没有被查出来，说明数据库里没有这个用户名
+            new User({
+                username: parms.username,
+                password: parms.password
+            }).save(function (error, user) {
+                if (user) {
+                    //注册成功
+
+                    responseMesg.success = true;
+                    responseMesg.message = '注册成功！';
+                    resp.json(responseMesg);
+                }
+            });
+        }
+    })
+
+
+});
 
 /**
  * 校验用户民和密码

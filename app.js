@@ -106,9 +106,9 @@ if (isDev) {
             open: false,
             online: false, //离线工作模式，可以大大提高启动速度
             notify: false, //不显示在浏览器中的任何通知
-            proxy: 'localhost:8080', //要代理的服务器地址
+            proxy: 'localhost:3000', //要代理的服务器地址
             files: './server/views/**', //监听被修改的代码
-            port: 3000 //服务器启动的端口
+            port: 8080 //服务器启动的端口
         }, () => console.log('开发模式，代理服务器启动成功'));
 
 

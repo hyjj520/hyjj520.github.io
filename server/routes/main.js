@@ -93,8 +93,13 @@ router.get('/login',(req,res,next)=>{
     */
     res.render('login');
 });
+router.get('/index',(req,res,next)=>{
 
-
+    res.render('index');
+});
+router.get('/register',(req,resp,next)=>{
+    resp.render('register');
+});
 
 /**
  * 首页文章列表

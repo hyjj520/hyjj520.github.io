@@ -14,7 +14,7 @@ module.exports = {
     output: {
         path: __dirname + '/public',
         filename: '[name].js',
-        publicPath: 'http://localhost:3000/public', //这里的地址要换成代理服务器的地址
+        publicPath: 'http://localhost:8080/public', //这里的地址要换成代理服务器的地址
     },
     devtool: 'eval-source-map', //2
     resolve:{
